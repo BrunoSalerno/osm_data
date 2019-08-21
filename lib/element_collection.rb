@@ -14,15 +14,24 @@ module OSMData
     def <<(elements)
       elements = Array(elements)
       elements.each do |element|
-        if element.is_a?(Node)
-          @nodes << element
-        elsif element.is_a?(Way)
-          @ways << element
-          self << element.members
-        elsif element.is_a?(Relation)
-          @relations << element
-          self << element.members
-        end
+        destination = if element.is_a?(Node)
+                        @nodes
+                      elsif element.is_a?(Way)
+                        @ways
+                      elsif element.is_a?(Relation)
+                        @relations
+                      end
+        push element, destinaton
+      end
+    end
+
+    private
+
+    def push(element, destination)
+      return if destination.include?(element)
+      destination.push(element)
+      if [Way, Relation].include?(element.class)
+        self << element.members
       end
     end
   end
