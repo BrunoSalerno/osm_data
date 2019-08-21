@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rake'
+gem 'nokogiri', require: false
 gem 'pry', require: false
 
 group :test do

@@ -1,9 +1,12 @@
 require_relative "node"
 require_relative "way"
+require_relative "writers/xml"
 
 module OSMData
   class ElementCollection
     attr_reader :nodes, :ways, :relations
+
+    include Writer::XML
 
     def initialize
       @nodes = []

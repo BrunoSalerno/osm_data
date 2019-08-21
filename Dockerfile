@@ -1,5 +1,8 @@
 FROM ruby:2.3-slim-stretch
 
+RUN apt-get update && apt-get install -y \
+  build-essential
+
 ENV HOME /root
 
 WORKDIR /app
