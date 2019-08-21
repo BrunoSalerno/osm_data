@@ -1,4 +1,4 @@
 #!/bin/bash
 
 tools/build &&
-docker run -it osm_data bundle exec rake test
+docker run -it --rm osm_data bundle exec rake test
