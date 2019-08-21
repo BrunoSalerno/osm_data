@@ -6,7 +6,7 @@ module OSMData
   class ElementCollection
     attr_reader :nodes, :ways, :relations
 
-    include Writer::XML
+    include Writers::XML
 
     def initialize
       @nodes = []

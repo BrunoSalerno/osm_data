@@ -1,5 +1,5 @@
 module OSMData
-  module Writer
+  module Writers
     module XML
       require 'nokogiri'
 

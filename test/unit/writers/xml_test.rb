@@ -1,6 +1,6 @@
 require_relative "../../config"
 
-describe OSMData::Writer::XML do
+describe OSMData::Writers::XML do
   let (:node) do
     OSMData::Node.new(id: -12, lat: 23, lon: 32)
   end
