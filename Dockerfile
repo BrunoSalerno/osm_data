@@ -4,8 +4,7 @@ ENV HOME /root
 
 WORKDIR /app
 
-ADD Gemfile /app/
-#ADD Gemfile Gemfile.lock /app/
+ADD Gemfile Gemfile.lock /app/
 
 RUN \
   gem install bundler && \
