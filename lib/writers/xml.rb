@@ -4,7 +4,7 @@ module OSMData
       require 'nokogiri'
 
       def to_xml
-        builder = Nokogiri::XML::Builder.new do |xml|
+        builder = Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
           xml.osm {
             nodes.map do |node|
               xml.node(id: node.id, lat: node.lat, lon: node.lon) {

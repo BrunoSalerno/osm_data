@@ -19,7 +19,7 @@ describe OSMData::Writers::XML do
     col << rel
 
     expected_xml = <<XML
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <osm>
   <node id="-12" lat="23" lon="32"/>
   <way id="-109">
