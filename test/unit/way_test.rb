@@ -5,6 +5,11 @@ describe OSMData::Way do
   let (:way2) {OSMData::Way.new}
   let (:node) {OSMData::Node.new(lat: 23, lon: 22)}
 
+  it "should have tags" do
+    way.tags = ['a tag']
+    assert_equal ['a tag'], way.tags
+  end
+
   it "should allow node members" do
     way << node
     assert_equal [node], way.members
