@@ -25,6 +25,11 @@ describe OSMData::ElementCollection do
 
   let (:col) {OSMData::ElementCollection.new}
 
+  it "should accept nodes and organize them well" do
+    col << nodes[1..3]
+    assert_equal nodes[1..3], col.nodes
+  end
+
   it "should accept ways and organize them well" do
     col << way1
     assert_equal nodes[0..1], col.nodes
@@ -38,8 +43,22 @@ describe OSMData::ElementCollection do
     assert_equal [rel], col.relations
   end
 
-  it "should accept nodes and organize them well" do
-    col << nodes[1..3]
-    assert_equal nodes[1..3], col.nodes
+  it "should accept several elements at the same time" do
+    col << [way1, way2]
+    assert_equal nodes[0..3], col.nodes
+    assert_equal [way1, way2], col.ways
+  end
+
+  it "shouldn't accept duplicated elements" do
+    col << [way1, way1]
+    assert_equal nodes[0..1], col.nodes
+    assert_equal [way1], col.ways
+  end
+
+  it "shouldn't accept duplicated nodes" do
+    col << way1
+    col << nodes[0]
+    assert_equal nodes[0..1], col.nodes
+    assert_equal [way1], col.ways
   end
 end
