@@ -4,7 +4,7 @@ require_relative 'node'
 module OSMData
   class Way < Element
     def valid_member_classes
-      [OSMData::Node]
+      [Node]
     end
   end
 end
