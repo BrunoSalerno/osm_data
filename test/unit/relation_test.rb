@@ -11,7 +11,7 @@ describe OSMData::Relation do
     assert_equal ['a tag'], rel.tags
   end
 
-  it "should allow ways and node as members" do
+  it "should allow ways and nodes as members" do
     rel << way
     rel << node
     assert_equal [way, node], rel.members
