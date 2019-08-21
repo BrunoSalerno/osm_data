@@ -7,12 +7,16 @@ module OSMData
 
     def initialize(**args)
       @members = []
-      @tags = []
+      @tags = {}
 
       args.each_pair do |k,v|
         accessor = :"#{k}="
         if self.respond_to?(accessor)
-          self.send(accessor, v)
+          if accessor == :"members="
+            self << v
+          else
+            self.send(accessor, v)
+          end
         end
       end
     end

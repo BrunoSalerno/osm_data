@@ -5,10 +5,11 @@ describe OSMData::Relation do
   let (:rel) {OSMData::Relation.new}
   let (:rel2) {OSMData::Relation.new}
   let (:node) {OSMData::Node.new(lat: 23, lon: 22)}
+  let (:tags) {{highway: 'unclassified', name: 'Pastower Straße'}}
 
   it "should have tags" do
-    rel.tags = ['a tag']
-    assert_equal ['a tag'], rel.tags
+    rel.tags = tags
+    assert_equal tags, rel.tags
   end
 
   it "should allow ways and nodes as members" do
@@ -20,6 +21,11 @@ describe OSMData::Relation do
   it "should allow ways and nodes as members in arrays" do
     rel << [way, node]
     assert_equal [way, node], rel.members
+  end
+
+  it "should allow members on instantiation" do
+    r = OSMData::Relation.new(members: [way, node])
+    assert_equal [way, node], r.members
   end
 
   it "shouldn't allow other kind of members" do
