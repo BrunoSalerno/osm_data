@@ -21,9 +21,12 @@ module OSMData
       raise NotImplementError
     end
 
-    def <<(member)
-      raise InvalidMemberError unless valid_member?(member)
-      @members << member
+    def <<(members)
+      members = Array(members)
+      members.each do |member|
+        raise InvalidMemberError unless valid_member?(member)
+        @members << member
+      end
     end
 
     private

@@ -21,7 +21,7 @@ module OSMData
                       elsif element.is_a?(Relation)
                         @relations
                       end
-        push element, destinaton
+        push element, destination
       end
     end
 

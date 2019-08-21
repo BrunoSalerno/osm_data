@@ -17,6 +17,11 @@ describe OSMData::Relation do
     assert_equal [way, node], rel.members
   end
 
+  it "should allow ways and nodes as members in arrays" do
+    rel << [way, node]
+    assert_equal [way, node], rel.members
+  end
+
   it "shouldn't allow other kind of members" do
     assert_raises OSMData::InvalidMemberError do
       rel << rel2

@@ -15,6 +15,11 @@ describe OSMData::Way do
     assert_equal [node], way.members
   end
 
+  it "should allow node members in arrays" do
+    way << [node]
+    assert_equal [node], way.members
+  end
+
   it "shouldn't allow other kind of members" do
     assert_raises OSMData::InvalidMemberError do
       way << way2
