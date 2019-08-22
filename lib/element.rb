@@ -29,6 +29,7 @@ module OSMData
       members = Array(members)
       members.each do |member|
         raise InvalidMemberError unless valid_member?(member)
+        next if @members.include?(member)
         @members << member
       end
     end

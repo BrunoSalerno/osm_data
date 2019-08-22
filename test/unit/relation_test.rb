@@ -33,4 +33,9 @@ describe OSMData::Relation do
       rel << rel2
     end
   end
+
+  it "shouldn't allow duplicated members" do
+    rel << [way, way, node]
+    assert_equal [way, node], rel.members
+  end
 end

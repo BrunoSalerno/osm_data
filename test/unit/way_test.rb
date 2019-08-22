@@ -31,4 +31,9 @@ describe OSMData::Way do
       way << way2
     end
   end
+
+  it "shouldn't allow duplicated members" do
+    way << [node, node]
+    assert_equal [node], way.members
+  end
 end
