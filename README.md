@@ -8,13 +8,12 @@ way = OSMData::Way.new(id: -109, members: [node], tags: {route: 'bus', type: 'ro
 relation = OSMData::Relation.new(id: -23, members: [way], tags: {name: 'Bus 55'})
 
 collection = OSMData::ElementCollection.new
-
 collection << relation
 
-col.to_xml
+collection.to_xml
 ```
 
-Output
+Output:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <osm>
